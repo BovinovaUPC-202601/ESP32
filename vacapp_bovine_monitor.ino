@@ -19,6 +19,7 @@ const char* API_URL = "https://tu-backend.azurewebsites.net/api/v1/iot-monitorin
 // CONFIGURACION DEL DISPOSITIVO
 // ============================================
 const int    BOVINE_ID = 1;           // ID del bovino en la base de datos VacApp
+const int    USER_ID   = 1;           // ID del ganadero propietario en VacApp
 const char*  DEVICE_ID = "esp32-001"; // ID único del dispositivo ESP32
 
 // ============================================
@@ -145,6 +146,7 @@ void sendToBackend(float heartRate, double temperature) {
   // Construir JSON con campos del BC IoTMonitoring
   String json = "{";
   json += "\"bovineId\":" + String(BOVINE_ID) + ",";
+  json += "\"userId\":" + String(USER_ID) + ",";
   json += "\"deviceId\":\"" + String(DEVICE_ID) + "\",";
   json += "\"temperature\":" + String(temperature, 2) + ",";
   json += "\"heartRate\":" + String(heartRate, 1);
